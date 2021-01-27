@@ -1,7 +1,6 @@
-import { Button, createStyles, makeStyles } from "@material-ui/core"
+import { Button, createStyles, makeStyles, Theme } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import Divider from "@material-ui/core/Divider"
-import Grid from "@material-ui/core/Grid"
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { connect } from "react-redux"
@@ -17,6 +16,7 @@ import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogActions from "@material-ui/core/DialogActions"
+import Paper from "@material-ui/core/Paper"
 
 interface DispatchProps {
     getLocalStorage: () => void
@@ -72,11 +72,11 @@ const WidgetsPage: React.FC<Props> = (props) => {
                 </Button>
             </h1>
             <Divider />
-            <Grid container spacing={3} className={classes.content}>
+            <div className={classes.content}>
                 {hasWidgets &&
                     props.widgets.map((item, idx) => {
                         return (
-                            <Grid key={idx} item xs={12} sm={6} md={4} lg={4}>
+                            <div className={classes.gridItem} key={idx}>
                                 {item.widget === FrontEndWidgets.Card && (
                                     <React.Fragment>
                                         <Button
@@ -100,7 +100,12 @@ const WidgetsPage: React.FC<Props> = (props) => {
                                             Remove
                                             <DeleteForeverIcon />
                                         </Button>
-                                        <CustomDialog />
+                                        <Paper
+                                            className={classes.paper}
+                                            elevation={3}
+                                        >
+                                            <CustomDialog />
+                                        </Paper>
                                     </React.Fragment>
                                 )}
                                 {item.widget === FrontEndWidgets.Datepicker && (
@@ -113,13 +118,18 @@ const WidgetsPage: React.FC<Props> = (props) => {
                                             Remove
                                             <DeleteForeverIcon />
                                         </Button>
-                                        <Datepickers />
+                                        <Paper
+                                            className={classes.paper}
+                                            elevation={3}
+                                        >
+                                            <Datepickers />
+                                        </Paper>
                                     </React.Fragment>
                                 )}
-                            </Grid>
+                            </div>
                         )
                     })}
-            </Grid>
+            </div>
             <Dialog
                 open={removeDialog}
                 onClose={handleDialogCancel}
@@ -152,10 +162,21 @@ const WidgetsPage: React.FC<Props> = (props) => {
     )
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         content: {
-            paddingTop: 20,
+            columnGap: 3,
+            [theme.breakpoints.up("sm")]: {
+                columnCount: 3,
+                padding: "20px 0 40px 0",
+            },
+        },
+        gridItem: {
+            breakInside: "avoid",
+            padding: 10,
+        },
+        paper: {
+            padding: 15,
         },
     })
 )
@@ -166,7 +187,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapPropsToDispatch = {
     getLocalStorage,
-    removeItemFromWidget
+    removeItemFromWidget,
 }
 
 export default connect(mapStateToProps, mapPropsToDispatch)(WidgetsPage)

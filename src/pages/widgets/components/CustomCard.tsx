@@ -86,7 +86,7 @@ const CustomCard: React.FC<Props> = (props) => {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            maxWidth: 345,
+            width: "100%",
         },
         media: {
             height: 0,
