@@ -1,15 +1,15 @@
 import React from "react"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
-import Widgets from "./pages/widgets"
-import Add from "./pages/add"
-import PrivateRoute from "./PrivateRoutes"
+import Widget from "./pages/widgets"
+import AddWidget from "pages/widgets/AddWidget"
+
 
 const App: React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Widgets} />
-                <Route exact path="/add" component={Add} />
+                <Route exact path="/" component={Widget} />
+                <Route exact path="/add" component={AddWidget} />
                 {/* <PrivateRoute path="/:id" component={Add} /> */}
                 <Route>
                     <Redirect to="/" />

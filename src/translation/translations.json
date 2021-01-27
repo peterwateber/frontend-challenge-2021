@@ -1,0 +1,59 @@
+{
+    "en": {
+        "translation": {
+            "Overview": "Overview",
+            "Card": {
+                "CardName": "Peter Wonders",
+                "CardDetails": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                "CardCollapseDetails": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            },
+            "Dialog": {
+                "OpenAlertDialog": "Open Alert Dialog",
+                "OpenAlertDialogTitle": "Use Google's location service?",
+                "OpenAlertDialogContent": "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.",
+                "OpenAlertDialogButton": {
+                    "Agree": "Agree",
+                    "Disagree": "Disagree"
+                }
+            }
+        }
+    },
+    "fr": {
+        "translation": {
+            "Overview": "Overview FR",
+            "Card": {
+                "CardName": "Peter Wonders FR",
+                "CardDetails": "<some translation FR>",
+                "CardCollapseDetails": "<some translation FR>"
+            },
+            "Dialog": {
+                "OpenAlertDialog": "Open Alert Dialog FR",
+                "OpenAlertDialogTitle": "Use Google's location service? FR",
+                "OpenAlertDialogContent": "<some translation FR>",
+                "OpenAlertDialogButton": {
+                    "Agree": "Agree FR",
+                    "Disagree": "Disagree FR"
+                }
+            }
+        }
+    },
+    "de": {
+        "translation": {
+            "Overview": "Overview DE",
+            "Card": {
+                "CardName": "Peter Wonders DE",
+                "CardDetails": "<some translation DE>",
+                "CardCollapseDetails": "<some translation DE>"
+            },
+            "Dialog": {
+                "OpenAlertDialog": "Open Alert Dialog DE",
+                "OpenAlertDialogTitle": "Use Google's location service? DE",
+                "OpenAlertDialogContent": "<some translation DE>",
+                "OpenAlertDialogButton": {
+                    "Agree": "Agree DE",
+                    "Disagree": "Disagree DE"
+                }
+            }
+        }
+    }
+}

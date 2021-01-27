@@ -8,7 +8,7 @@ import {
     KeyboardDatePicker,
 } from "@material-ui/pickers"
 
-const TextFields: React.FC = () => {
+const Datepickers: React.FC = () => {
     const classes = useStyles()
     const [selectedDate, setSelectedDate] = React.useState<Date | null>(
         new Date()
@@ -21,19 +21,6 @@ const TextFields: React.FC = () => {
         <form className={classes.root} noValidate autoComplete="off">
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container justify="space-around">
-                    <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        fullWidth
-                        label="Date picker inline"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            "aria-label": "change date",
-                        }}
-                    />
                     <KeyboardDatePicker
                         margin="normal"
                         fullWidth
@@ -67,4 +54,4 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export default TextFields
+export default Datepickers

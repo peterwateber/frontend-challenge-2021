@@ -5,9 +5,11 @@ import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
+import { useTranslation } from "react-i18next"
 
 const CustomDialog: React.FC = () => {
     const [open, setOpen] = React.useState(false)
+    const { t } = useTranslation()
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -24,7 +26,7 @@ const CustomDialog: React.FC = () => {
                 color="primary"
                 onClick={handleClickOpen}
             >
-                Open alert dialog
+                {t("Dialog.OpenAlertDialog")}
             </Button>
             <Dialog
                 open={open}
@@ -33,21 +35,19 @@ const CustomDialog: React.FC = () => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
+                    {t("Dialog.OpenAlertDialogTitle")}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means
-                        sending anonymous location data to Google, even when no
-                        apps are running.
+                        {t("Dialog.OpenAlertDialogContent")}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Disagree
+                        {t("Dialog.OpenAlertDialogButton.Agree")}
                     </Button>
                     <Button onClick={handleClose} color="primary" autoFocus>
-                        Agree
+                        {t("Dialog.OpenAlertDialogButton.Disagree")}
                     </Button>
                 </DialogActions>
             </Dialog>

@@ -1,11 +1,10 @@
 import React from "react"
-import Buttons from "./Buttons"
-import TextFields from "./TextFields"
+import Datepickers from "./Datepickers"
 
 const Form: React.FC = () => {
     return (
         <div>
-            <TextFields />
+            <Datepickers />
         </div>
     )
 }
