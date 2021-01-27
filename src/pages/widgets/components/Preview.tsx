@@ -18,7 +18,7 @@ const Preview: React.FC<Props> = (props) => {
     }, [i18n, props.selectedLanguage])
 
     return (
-        <div>
+        <div data-testid="preview">
             <h2 className={classes.previewTitle}>Preview</h2>
             {Widget}
         </div>

@@ -151,6 +151,7 @@ const AddWidget: React.FC<Props> = (props) => {
                         </div>
                         <div className={classes.formControl}>
                             <Button
+                                data-testid="submitbtn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
@@ -160,7 +161,12 @@ const AddWidget: React.FC<Props> = (props) => {
                                 Add widget
                             </Button>
                         </div>
-                        <Button type="button" color="primary" disableElevation href="/">
+                        <Button
+                            type="button"
+                            color="primary"
+                            disableElevation
+                            href="/"
+                        >
                             Go back to Overview page
                         </Button>
                     </form>
@@ -179,6 +185,7 @@ const AddWidget: React.FC<Props> = (props) => {
                 onClose={handleFormDialog}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
+                data-testid="dialog"
             >
                 <DialogContent>
                     <DialogContentText

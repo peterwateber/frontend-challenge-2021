@@ -30,7 +30,7 @@ const CustomCard: React.FC<Props> = (props) => {
     }
 
     return (
-        <Card className={classes.root}>
+        <Card data-testid="card" className={classes.root}>
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>

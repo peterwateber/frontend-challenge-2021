@@ -1,29 +1,28 @@
 import { Button, createStyles, makeStyles, Theme } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
 import Divider from "@material-ui/core/Divider"
+import Paper from "@material-ui/core/Paper"
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever"
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { connect } from "react-redux"
 import { RootState } from "store"
 import { getLocalStorage, removeItemFromWidget } from "store/actions/Widgets"
 import { FrontEndWidgets, Widget } from "types"
-import Datepickers from "./components/Form/Datepickers"
 import CustomCard from "./components/CustomCard"
 import CustomDialog from "./components/CustomDialog"
-import { RouteComponentProps } from "react-router-dom"
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever"
-import Dialog from "@material-ui/core/Dialog"
-import DialogContent from "@material-ui/core/DialogContent"
-import DialogContentText from "@material-ui/core/DialogContentText"
-import DialogActions from "@material-ui/core/DialogActions"
-import Paper from "@material-ui/core/Paper"
+import Datepickers from "./components/Form/Datepickers"
 
 interface DispatchProps {
     getLocalStorage: () => void
     removeItemFromWidget: (id: string) => void
 }
 
-interface Props extends DispatchProps, RouteComponentProps<any> {
+interface Props extends DispatchProps {
     widgets: Widget[]
 }
 
@@ -78,8 +77,9 @@ const WidgetsPage: React.FC<Props> = (props) => {
                         return (
                             <div className={classes.gridItem} key={idx}>
                                 {item.widget === FrontEndWidgets.Card && (
-                                    <React.Fragment>
+                                    <div data-testid={`item-${item.id}`}>
                                         <Button
+                                            data-testid={`button-${item.id}`}
                                             onClick={() =>
                                                 handleRemove(item.id)
                                             }
@@ -88,11 +88,12 @@ const WidgetsPage: React.FC<Props> = (props) => {
                                             <DeleteForeverIcon />
                                         </Button>
                                         <CustomCard />
-                                    </React.Fragment>
+                                    </div>
                                 )}
                                 {item.widget === FrontEndWidgets.Dialog && (
-                                    <React.Fragment>
+                                    <div data-testid={`item-${item.id}`}>
                                         <Button
+                                            data-testid={`button-${item.id}`}
                                             onClick={() =>
                                                 handleRemove(item.id)
                                             }
@@ -106,11 +107,12 @@ const WidgetsPage: React.FC<Props> = (props) => {
                                         >
                                             <CustomDialog />
                                         </Paper>
-                                    </React.Fragment>
+                                    </div>
                                 )}
                                 {item.widget === FrontEndWidgets.Datepicker && (
-                                    <React.Fragment>
+                                    <div data-testid={`item-${item.id}`}>
                                         <Button
+                                            data-testid={`button-${item.id}`}
                                             onClick={() =>
                                                 handleRemove(item.id)
                                             }
@@ -124,17 +126,16 @@ const WidgetsPage: React.FC<Props> = (props) => {
                                         >
                                             <Datepickers />
                                         </Paper>
-                                    </React.Fragment>
+                                    </div>
                                 )}
                             </div>
                         )
                     })}
             </div>
             <Dialog
+                data-testid="dialog"
                 open={removeDialog}
                 onClose={handleDialogCancel}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
                     <DialogContentText>
@@ -143,6 +144,7 @@ const WidgetsPage: React.FC<Props> = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button
+                        data-testid="button-dialog-confirm"
                         onClick={handleDialogOkay}
                         color="primary"
                         autoFocus
@@ -150,6 +152,7 @@ const WidgetsPage: React.FC<Props> = (props) => {
                         Okay
                     </Button>
                     <Button
+                        data-testid="button-dialog-cancel"
                         onClick={handleDialogCancel}
                         color="primary"
                         autoFocus
@@ -166,7 +169,8 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         content: {
             columnGap: 3,
-            [theme.breakpoints.up("sm")]: {
+            columnCount: 2,
+            [theme.breakpoints.up("md")]: {
                 columnCount: 3,
                 padding: "20px 0 40px 0",
             },

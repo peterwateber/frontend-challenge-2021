@@ -22,8 +22,8 @@ export const getLocalStorage = (): ThunkAction<any, any, any, Action> => {
             window.localStorage.getItem(localStorageName) || "{}"
         )
         if (Boolean(Object.keys(widgets).length)) {
-            dispatch(setWidgets(widgets.widgets))
             dispatch(setLanguage(widgets.currentLanguage))
+            dispatch(setWidgets(widgets.widgets))
         }
     }
 }
@@ -33,8 +33,10 @@ export const removeItemFromWidget = (
 ): ThunkAction<any, any, any, Action> => {
     return async (dispatch, getState) => {
         const { widgets } = getState()
-        const newWidgets = widgets.widgets.filter((widget: Widget) => widget.id !== id)
-       dispatch(setWidgets(newWidgets))
+        const newWidgets = widgets.widgets.filter(
+            (widget: Widget) => widget.id !== id
+        )
+        dispatch(setWidgets(newWidgets))
     }
 }
 
@@ -51,7 +53,6 @@ export const addWidgets = (widgets: Widget[]): WidgetsAction => ({
         widgets,
     },
 })
-
 
 export const setLanguage = (currentLanguage: LanguagesCode): WidgetsAction => ({
     type: WidgetsActionTypes.SET_LANGUAGE,
